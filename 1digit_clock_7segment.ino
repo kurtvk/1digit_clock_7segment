@@ -8,16 +8,18 @@ int bdel=100; // blank delay
 /*
 DS1307 SDA pin 2
        SDL pin 3
-       
+     
+common  tube is pin 2  
+
 */
 
-int sega =16;                 // segment a connected to pin 4
-int segb =5;                 // segment b connected to pin 5
-int segc =6;                 // segment c connected to pin 6
-int segd =7;                 
-int sege =8;                 
-int segf =9;                 
-int segg =10;       
+int sega =16;                 // tube 7 = segment a connected to pin 16
+int segb =5;                 //  tube 8 = segment b connected to pin 5
+int segc =6;                 //  tube 5 = segment c connected to pin 6
+int segd =7;                 //  tube 4
+int sege =8;                 //  tube 3
+int segf =9;                 //  tube 9
+int segg =10;                 // tube 6
 
 void setup() {
     pinMode(sega, OUTPUT);      // sets the digital pin as output
@@ -31,6 +33,9 @@ void setup() {
   Serial.begin(57600);
     Wire.begin();
     RTC.begin();
+
+//RTC.adjust(DateTime(__DATE__, __TIME__));
+//uncomment to manually adjust time
 
     if (! RTC.isrunning()) {
         Serial.println("RTC not running, oh my!");
@@ -69,7 +74,7 @@ void loop() {
     
     displayTime1(h1); // displays the time on the display
      delay(del);
-     digitalWrite(sega, LOW);   // sets the segments on
+     digitalWrite(sega, LOW);   // sets the segments off
      digitalWrite(segb, LOW);
      digitalWrite(segc, LOW);
      digitalWrite(segd, LOW);
@@ -80,7 +85,7 @@ void loop() {
 
     displayTime1(h2); // displays the time on the display
      delay(del);
-     digitalWrite(sega, LOW);   // sets the segments on
+     digitalWrite(sega, LOW);   // sets the segments off
      digitalWrite(segb, LOW);
      digitalWrite(segc, LOW);
      digitalWrite(segd, LOW);
@@ -91,7 +96,7 @@ void loop() {
      
     displayTime1(m1); // displays the time on the display
      delay(del);
-     digitalWrite(sega, LOW);   // sets the segments on
+     digitalWrite(sega, LOW);   // sets the segments off
      digitalWrite(segb, LOW);
      digitalWrite(segc, LOW);
      digitalWrite(segd, LOW);
@@ -102,7 +107,7 @@ void loop() {
 
     displayTime1(m2); // displays the time on the display
      delay(del);
-     digitalWrite(sega, LOW);   // sets the segments on
+     digitalWrite(sega, LOW);   // sets the segments off
      digitalWrite(segb, LOW);
      digitalWrite(segc, LOW);
      digitalWrite(segd, LOW);
